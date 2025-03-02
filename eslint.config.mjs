@@ -1,5 +1,5 @@
 import globals from "globals";
-import pluginJs from "@eslint/js";
+// import pluginJs from "@eslint/js";
 import tseslint from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
 import prettierPlugin from "eslint-plugin-prettier";
@@ -24,16 +24,17 @@ export default [
     },
 
     rules: {
-      ...pluginJs.configs.recommended.rules,
       ...tseslint.configs.recommended.rules,
       ...prettierConfig.rules,
-      "@typescript-eslint/no-unused-vars": "warn",
+      "no-unused-vars": "error",
       "no-console": "warn",
       semi: ["error", "always"],
-      quotes: ["error", "double"], // Match ESLint & Prettier
-      "prettier/prettier": "error",
+      "no-var": "error",
+      "prefer-const": "error",
+      "no-unused-expressions": "error",
+      "no-undef": "error",
     },
 
-    ignores: ["dist/**"], // Ignore compiled files
+    ignores: ["dist/**", "node_modules/**"], // Ignore compiled files
   },
 ];
